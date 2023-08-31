@@ -67,7 +67,17 @@ h1 {
   width: 100%;
   margin: 1rem auto;
 }
+img {
+  position: relative;
+  margin: 1rem auto;
+  padding: 1rem;
+  width: 20%;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
 .app .clouds {
+  display: flex;
+  flex-direction: row;
   position: relative;
   right: -80%;
   transform-origin: 0 0;

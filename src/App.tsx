@@ -24,11 +24,11 @@ interface WeatherData {
 
 function App() {
   const [data, setData] = useState<WeatherData | null>(null);
-  const [icons,setIcons]=useState("")
+  const [icons, setIcons] = useState("");
   const [location, setLocation] = useState(``);
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=db0840f95d9213c5790cddb57ac9d6cf&units=metric`;
-  const iconUrl= `https://openweathermap.org/img/wn/${icons}d@2x.png`
+  const iconUrl = `https://openweathermap.org/img/wn/${icons}d@2x.png`;
 
   const searchLocation = (event: { key: string }) => {
     if (event.key === "Enter") {
@@ -51,6 +51,7 @@ function App() {
           type="text"
         />
       </div>
+{data?.name!==undefined &&
       <div className="container">
         <div className="top">
           <div className="location">
@@ -58,12 +59,14 @@ function App() {
           </div>
           <div className="temp">
             <h1>{data?.main.temp}°C</h1>
-            <p>{data?.weather[0].icon && (
-            <img
-              src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
-              alt="Weather Icon"
-            />
-          )}</p>
+            <p className="Icons">
+              {data?.weather[0].icon && (
+                <img
+                  src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+                  alt="Weather Icon"
+                />
+              )}
+            </p>
           </div>
           <div className="clouds">
             <p className="bold">{data?.weather[0].description}</p>
@@ -84,6 +87,7 @@ function App() {
           </div>
         </div>
       </div>
+      }
     </div>
   );
 }
